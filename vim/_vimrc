@@ -1,0 +1,66 @@
+execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'nightsense/office'
+call plug#end()
+" ensure fs.watch correctly detects file changes
+set backupcopy=yes
+syntax on
+set spell
+set spelllang=en_us
+set number " show line numbers
+set relativenumber " show relative line numbers
+
+" Set code folding
+set foldmethod=indent
+set foldlevelstart=3
+
+filetype plugin indent on
+" Show existing tab with 4 spaces
+set tabstop=4
+
+" When indenting with '>', use 4 spaces width
+set shiftwidth=4
+
+" When pressing tab, indent 4 spaces
+set expandtab
+
+" Prevent line-break at the end of a file
+set nofixendofline
+set noeol
+
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+
+" Hover to view symbol information
+set ballooneval
+autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
+if !exists("g:ycm_semantic_triggers")
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+
+" Enable top buffer bar
+let g:airline#extensions#tabline#enabled = 1
+
+" Only show file name in buffer bar
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" Highlighting
+highlight clear SpellBad
+highlight SpellBad cterm=underline
+
+let $FZF_DEFAULT_COMMAND= 'ag -g ""'
+
+" Key mappings
+imap jj <Esc>
+map <c-p> :Files<enter>
+
+" Use json syntax for certain file types
+autocmd BufNewFile,BufRead .babelrc set syntax=json

@@ -1,16 +1,45 @@
-execute pathogen#infect()
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set t_Co=256                  " Use 256 colors
+set noswapfile                " don't create swap files
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'joshdick/onedark.vim'
+call vundle#end()
+filetype plugin indent on
+
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'nightsense/office'
+Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 call plug#end()
+
 " ensure fs.watch correctly detects file changes
 set backupcopy=yes
+
+" turn on colors and set color-scheme
+colorscheme onedark
 syntax on
+
+" turn on current-line highlighting
+set cursorline
+
+" Turn on spell checking
 set spell
 set spelllang=en_us
+
 set number " show line numbers
-set relativenumber " show relative line numbers
+" set relativenumber " show relative line numbers
 
 " Set code folding
 set foldmethod=indent
@@ -30,8 +59,6 @@ set expandtab
 set nofixendofline
 set noeol
 
-" set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
 
@@ -49,6 +76,9 @@ let g:airline#extensions#tabline#enabled = 1
 " Only show file name in buffer bar
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" Airline themes
+let g:airline_theme='onedark'
+
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
@@ -56,10 +86,13 @@ autocmd QuickFixCmdPost    l* nested lwindow
 highlight clear SpellBad
 highlight SpellBad cterm=underline
 
+" Use ag to search for files
 let $FZF_DEFAULT_COMMAND= 'ag -g ""'
 
-" Key mappings
+" press 'jj' to exit insert mode
 imap jj <Esc>
+
+" press ctrp+- to search files
 map <c-p> :Files<enter>
 
 " Use json syntax for certain file types

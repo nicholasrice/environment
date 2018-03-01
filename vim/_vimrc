@@ -14,6 +14,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'joshdick/onedark.vim'
+Plugin 'blueyed/vim-diminactive'
 call vundle#end()
 filetype plugin indent on
 
@@ -87,7 +88,7 @@ highlight clear SpellBad
 highlight SpellBad cterm=underline
 
 " Use ag to search for files
-let $FZF_DEFAULT_COMMAND= 'ag -g ""'
+let $FZF_DEFAULT_COMMAND= 'ag --ignore node_modules -g ""'
 
 " press 'jj' to exit insert mode
 imap jj <Esc>
@@ -97,3 +98,6 @@ map <c-p> :Files<enter>
 
 " Use json syntax for certain file types
 autocmd BufNewFile,BufRead .babelrc set syntax=json
+
+" Use :bd to delete buffers while maintaining window splits
+command Bd bp|bd #

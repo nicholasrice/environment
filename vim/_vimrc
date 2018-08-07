@@ -1,3 +1,11 @@
+set encoding=utf-8
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set t_Co=256                  " Use 256 colors
@@ -12,7 +20,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'Quramy/tsuquyomi'
+Plugin 'w0rp/ale'
 Plugin 'joshdick/onedark.vim'
 Plugin 'blueyed/vim-diminactive'
 call vundle#end()
@@ -62,10 +70,6 @@ set noeol
 
 let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
-
-" Hover to view symbol information
-set ballooneval
-autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
 if !exists("g:ycm_semantic_triggers")
     let g:ycm_semantic_triggers = {}
 endif
@@ -95,6 +99,9 @@ imap jj <Esc>
 
 " press ctrp+- to search files
 map <c-p> :Files<enter>
+
+" Configure ALE
+map <c-]> :ALEGoToDefinition<enter>
 
 " Use json syntax for certain file types
 autocmd BufNewFile,BufRead .babelrc set syntax=json

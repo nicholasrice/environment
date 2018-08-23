@@ -102,6 +102,7 @@ map <c-p> :Files<enter>
 
 " Configure ALE
 map <c-]> :ALEGoToDefinition<enter>
+let g:ale_fixers = { 'typescript': ['tslint'] }
 
 " Use json syntax for certain file types
 autocmd BufNewFile,BufRead .babelrc set syntax=json

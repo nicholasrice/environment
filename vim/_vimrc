@@ -23,6 +23,8 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'w0rp/ale'
 Plugin 'joshdick/onedark.vim'
 Plugin 'blueyed/vim-diminactive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 call vundle#end()
 filetype plugin indent on
 

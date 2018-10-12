@@ -25,6 +25,7 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'blueyed/vim-diminactive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'rust-lang/rust.vim'
 call vundle#end()
 filetype plugin indent on
 

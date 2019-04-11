@@ -25,6 +25,8 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'blueyed/vim-diminactive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-rsi'
+Plugin 'maxmellon/vim-jsx-pretty'
 call vundle#end()
 filetype plugin indent on
 
@@ -39,8 +41,8 @@ call plug#end()
 set backupcopy=yes
 
 " turn on colors and set color-scheme
-colorscheme onedark
 syntax on
+colorscheme onedark
 
 " turn on current-line highlighting
 set cursorline
@@ -83,6 +85,9 @@ let g:airline#extensions#tabline#enabled = 1
 " Only show file name in buffer bar
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+"Enable ALE with airline
+let g:airline#extensions#ale#enabled = 1
+
 " Airline themes
 let g:airline_theme='onedark'
 
@@ -104,7 +109,7 @@ map <c-p> :Files<enter>
 
 " Configure ALE
 map <c-]> :ALEGoToDefinition<enter>
-let g:ale_fixers = { 'typescript': ['tslint'] }
+let g:ale_fixers = { 'typescript': ['prettier','tslint'] }
 
 " Use json syntax for certain file types
 autocmd BufNewFile,BufRead .babelrc set syntax=json

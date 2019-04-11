@@ -27,6 +27,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rsi'
 Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'rust-lang/rust.vim'
 call vundle#end()
 filetype plugin indent on
 

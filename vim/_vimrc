@@ -100,7 +100,7 @@ highlight clear SpellBad
 highlight SpellBad cterm=underline
 
 " Use ag to search for files
-let $FZF_DEFAULT_COMMAND= 'ag --ignore node_modules -g ""'
+let $FZF_DEFAULT_COMMAND= 'ag --ignore node_modules --ignore dist -g ""'
 
 " press 'jj' to exit insert mode
 imap jj <Esc>
@@ -111,6 +111,7 @@ map <c-p> :Files<enter>
 " Configure ALE
 map <c-]> :ALEGoToDefinition<enter>
 let g:ale_fixers = { 'typescript': ['prettier','tslint'] }
+let b:ale_set_balloons = 1
 
 " Use json syntax for certain file types
 autocmd BufNewFile,BufRead .babelrc set syntax=json

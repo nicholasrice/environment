@@ -21,7 +21,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'w0rp/ale'
-Plugin 'joshdick/onedark.vim'
 Plugin 'blueyed/vim-diminactive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
@@ -36,6 +35,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'junegunn/seoul256.vim'
 call plug#end()
 
 " ensure fs.watch correctly detects file changes
@@ -43,7 +43,8 @@ set backupcopy=yes
 
 " turn on colors and set color-scheme
 syntax on
-colorscheme onedark
+colo seoul256-light
+set background=light
 
 " turn on current-line highlighting
 set cursorline
@@ -90,7 +91,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#ale#enabled = 1
 
 " Airline themes
-let g:airline_theme='onedark'
+let g:airline_theme='zenburn'
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
@@ -100,7 +101,7 @@ highlight clear SpellBad
 highlight SpellBad cterm=underline
 
 " Use ag to search for files
-let $FZF_DEFAULT_COMMAND= 'ag --ignore node_modules --ignore dist -g ""'
+let $FZF_DEFAULT_COMMAND= 'ag --ignore dist --ignore node_modules -g ""'
 
 " press 'jj' to exit insert mode
 imap jj <Esc>

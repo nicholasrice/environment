@@ -27,6 +27,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rsi'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'rust-lang/rust.vim'
+Plugin 'sudar/vim-arduino-syntax'
 call vundle#end()
 filetype plugin indent on
 
@@ -44,7 +45,7 @@ set backupcopy=yes
 " turn on colors and set color-scheme
 syntax on
 colo seoul256-light
-set background=light
+set background=dark
 
 " turn on current-line highlighting
 set cursorline

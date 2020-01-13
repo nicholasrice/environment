@@ -28,6 +28,8 @@ Plugin 'tpope/vim-rsi'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'rust-lang/rust.vim'
 Plugin 'sudar/vim-arduino-syntax'
+Plugin 'preservim/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 call vundle#end()
 filetype plugin indent on
 
@@ -120,3 +122,8 @@ autocmd BufNewFile,BufRead .babelrc set syntax=json
 
 " Use :bd to delete buffers while maintaining window splits
 command Bd bp|bd #
+
+" NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " close vim if NERDTree is only open window
+autocmd vimenter * if &filetype !=# 'gitcommit' | NERDTree | endif
+let NERDTreeShowHidden=1
